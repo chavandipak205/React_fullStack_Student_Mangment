@@ -48,6 +48,7 @@ export default function StudentList() {
               <th>Email</th>
               <th>Course</th>
               <th>Age</th>
+              <th>Roll No</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -65,6 +66,7 @@ export default function StudentList() {
                 <td>{s.email || "-"}</td>
                 <td>{s.course || "-"}</td>
                 <td>{s.age ?? "-"}</td>
+                <td>{s.rollNumber ?? "-"}</td>
                 <td className="actions">
                   <Link className="Editcss" to={`/students/${s.id}`}>View</Link>
                   <Link className="Editcss" to={`/edit/${s.id}`}>Edit</Link>
