@@ -2,23 +2,24 @@ import React, { useState } from 'react';
 import './Login.css';
 
 const Login = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+   const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simple validation
-    if (!email || !password) {
-      setError('Please enter both email and password.');
+
+    if (!username || !password) {
+      setError("Please enter both username and password.");
       return;
     }
-    setError('');
-    // Call parent handler (could be replaced with API call)
+
+    setError("");
     if (onLogin) {
-      onLogin({ email, password });
+      onLogin(username, password); // ✅ Pass separately
     }
   };
+
 
   return (
     <div className="login-container">
@@ -26,11 +27,11 @@ const Login = ({ onLogin }) => {
         <h2>Login</h2>
         {error && <div className="error">{error}</div>}
         <div className="form-group">
-          <label>Email:</label>
+          <label>User Name:</label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={username}
+            onChange={(e) => setUserName(e.target.value)}
             required
           />
         </div>
